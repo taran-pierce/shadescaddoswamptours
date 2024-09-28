@@ -23,3 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.1.4] - 2024-09-28
 ### Updated
 - Adjustments for build pipeline
+
+## [0.2.0] - 2024-09-28
+### Updated
+- Content updates
