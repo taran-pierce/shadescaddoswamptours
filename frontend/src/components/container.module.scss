@@ -1,0 +1,26 @@
+.container {
+  background: var(--white);
+}
+
+@media(min-width: 992px) {
+  .container {
+    background-color: var(--white);
+    border-left: 1px solid var(--transparent-black-dark);
+    border-right: 1px solid var(--transparent-black-dark);
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 0;
+
+    &.borderTop {
+      border-top: 3px solid var(--primary-color);
+    }
+
+    &.borderBottom {
+      border-bottom: 3px solid var(--primary-color);
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+}

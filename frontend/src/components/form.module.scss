@@ -1,0 +1,56 @@
+.hasError {
+  border: 1px solid var(--red);
+}
+
+.errorMessageWrapper {
+  border: 1px solid #da7979;
+  background: #f5bebe;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: var(--container-padding);
+  margin-bottom: var(--container-padding);
+
+  p {
+    font-weight: bold;
+  }
+}
+
+.formWrapper {
+  h3 {
+    margin-top: 2rem;
+  }
+
+  fieldset {
+    border: none;
+  }
+}
+
+.form {
+  margin-bottom: var(--container-padding);
+
+  label, input {
+    display: block;
+  }
+
+  label {
+    font-weight: bold;
+    margin-top: var(--container-padding);
+  }
+
+  input {
+    font-size: 1.6rem;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  textarea {
+    font-size: 1.6rem;
+    padding: var(--container-padding);
+    width: 100%;
+    min-height: 160px;
+  }
+
+  button {
+    margin-top: var(--container-padding);
+  }
+}

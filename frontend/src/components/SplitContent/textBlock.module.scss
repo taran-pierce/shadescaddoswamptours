@@ -1,0 +1,9 @@
+.textWrapper {
+  padding: var(--container-padding);
+  
+}
+@media(min-width: 992px) {
+  .textWrapper {
+    padding: var(--container-padding);
+  }
+}

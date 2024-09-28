@@ -1,0 +1,43 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "analyzeBundle": "ANALYZE=true next build",
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.19.3",
+    "@googlemaps/js-api-loader": "^1.16.2",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
+    "cloudinary": "^2.0.0",
+    "contentful": "^10.6.19",
+    "fs": "^0.0.1-security",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "next": "^14.2.3",
+    "next-cloudinary": "^5.20.0",
+    "next-share": "^0.27.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "sass": "^1.70.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^14.1.0",
+    "@types/google.maps": "^3.55.9",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "typescript": "^5"
+  }
+}

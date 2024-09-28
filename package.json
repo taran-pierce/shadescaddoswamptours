@@ -1,0 +1,36 @@
+{
+  "name": "shadescaddoswamptours",
+  "version": "0.1.0",
+  "description": "Shades Caddo Swamp Tours",
+  "main": "out/index.html",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taran-pierce/shadescaddoswamptours#main"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "sass",
+    "typescript",
+    "azure",
+    "contentful",
+    "axios",
+    "cloudinary"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Taran Pierce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taran-pierce/shadescaddoswamptours/issues"
+  },
+  "homepage": "https://github.com/taran-pierce/shadescaddoswamptours/tree/main#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0"
+  }
+}

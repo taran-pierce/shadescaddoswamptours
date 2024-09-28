@@ -1,0 +1,117 @@
+:root {
+  --black: #000;
+  --white: #fff;
+  --red: #ff0000;
+  --grey-dark: #777;
+  --primary-color: #736d1f;
+  --primary-color-light: #867f25;
+  --primary-color-dark: #756f1f;
+  --transparent-black-light: rgba(0,0,0,.3);
+  --transparent-black-dark: rgba(0,0,0,.6);
+  --font-family: Arial, Helvetica, sans-serif;
+  --container-padding: 2rem;
+  --container-negative-padding: -2rem;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-image: url('/images/topography.webp');
+  background-position: top left;
+  background-repeat: repeat;
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+a {
+  color: var(--primary-color);
+  cursor: pointer;
+  text-decoration: underline;
+}
+a:hover {
+  color: var(--primary-color-light);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+  display: block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  touch-action: manipulation;
+  background-image: none;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  border-radius: 4px;
+  user-select: none;
+  box-shadow: 0 1px 2px var(--transparent-black-light);
+  transition: box-shadow 1s ease-in-out,background-color .3s ease-in-out;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color-dark);
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: var(--primary-color-light);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
+h4 {
+  font-size: 2.rem;
+}
+
+h5 {
+  font-size: 2rem;
+}
+
+h6 {
+  font-size: 1.8rem;
+}
+
+h3 > a {
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+p {
+  font-size: 1.6rem;
+}

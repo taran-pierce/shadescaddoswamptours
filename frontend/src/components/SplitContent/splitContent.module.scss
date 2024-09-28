@@ -1,0 +1,41 @@
+.section {
+  border-bottom: 3px solid var(--primary-color);
+  border-top: 3px solid var(--primary-color);
+}
+
+.imageLast {
+  overflow: hidden;
+}
+
+@media(min-width: 992px) {
+  .section {
+    border-top: 0;
+    border-bottom: 0;
+  }
+
+  .imageWrapper {
+    overflow: hidden;
+    margin-right: var(--container-padding);
+    height: auto;
+
+    img {
+      display: block;
+    }
+  }
+
+  .imageLast {
+    .imageWrapper {
+      margin-left: var(--container-padding);
+      margin-right: var(--container-negative-padding);
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &.textOnly {
+      grid-template-columns: auto;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.faceBookWrapper {
+  // force share button width
+  // TODO not accepting documented width settings
+  iframe {
+    width: 300px !important;
+  }
+}
+
+@media(min-width: 992px) {
+  .faceBookWrapper {
+    min-width: 160px;
+    padding-left: 2rem;
+    padding-top: 2rem;
+  }
+}
