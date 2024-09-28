@@ -1,12 +1,12 @@
 {
   "name": "frontend",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "frontend",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "dependencies": {
         "@contentful/rich-text-react-renderer": "^15.19.3",
         "@googlemaps/js-api-loader": "^1.16.2",

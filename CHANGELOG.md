@@ -15,3 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.1.2] - 2024-09-28
 ### Updated
 - Adjustments for build pipeline
+
+## [0.1.3] - 2024-09-28
+### Updated
+- Adjustments for build pipeline
