@@ -9,13 +9,27 @@ on:
     branches:
       - main
 
+env:
+  AZURE_WEBAPP_NAME: caddo-lake-bayou-tours
+  NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN: ${{ vars.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN }}
+  NEXT_PUBLIC_CONTENTFUL_SPACE_ID: ${{ vars.NEXT_PUBLIC_CONTENTFUL_SPACE_ID }}
+  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ vars.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
+  NEXT_PUBLIC_CLOUDINARY_API_KEY: ${{ vars.NEXT_PUBLIC_CLOUDINARY_API_KEY }}
+  CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+  CONTENTFUL_PREVIEW_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_PREVIEW_ACCESS_TOKEN }}
+  CONTENTFUL_PREVIEW_SECRET: ${{ secrets.CONTENTFUL_PREVIEW_SECRET }}
+  CONTENTFUL_REVALIDATE_SECRET: ${{ secrets.CONTENTFUL_REVALIDATE_SECRET }}
+  CONTENTFUL_ENVIRONMENT: ${{ secrets.CONTENTFUL_ENVIRONMENT }}
+  NEXT_PUBLIC_GOOGLE_MAP_API_KEY: ${{ vars.NEXT_PUBLIC_GOOGLE_MAP_API_KEY }}
+  NEXT_PUBLIC_CONTACT_FORM_URL: ${{ secrets.NEXT_PUBLIC_CONTACT_FORM_URL }}
+
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
