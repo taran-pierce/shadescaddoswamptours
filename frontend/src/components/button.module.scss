@@ -16,8 +16,8 @@
   box-shadow: 0 1px 2px var(--transparent-black-light);
   transition: box-shadow .3s ease-in-out,background-color .3s ease-in-out;
   color: var(--white);
-  background-color: var(--primary-color);
-  border: 1px solid var(--primary-color-dark);
+  background-color: var(--secondary-color-light);
+  border: 1px solid var(--secondary-color-dark);
   text-decoration: none;
 
   &:visited {

@@ -1,11 +1,21 @@
 :root {
-  --black: #000;
+  --black: #1d1d1d;
   --white: #fff;
   --red: #ff0000;
-  --grey-dark: #777;
-  --primary-color: #736d1f;
-  --primary-color-light: #867f25;
-  --primary-color-dark: #756f1f;
+  --grey-dark: #3532317;
+  --color-green-dark: #2c2916;
+  --color-green: #424131;
+  --color-green-light: #575642;
+  --color-grey: #928e89;
+  --color-brown-light: #4e4f4a;
+  --color-brown: #3d3c39;
+  --color-brown-dark: #353231;
+  --primary-color: var(--color-green);
+  --primary-color-light: var(--color-green-light);
+  --primary-color-dark: var(--color-green-dark);
+  --secondary-color: var(--color-brown);
+  --secondary-color-light: var(--color-brown-light);
+  --secondary-color-dark: var(--color-brown-dark);
   --transparent-black-light: rgba(0,0,0,.3);
   --transparent-black-dark: rgba(0,0,0,.6);
   --font-family: Arial, Helvetica, sans-serif;
@@ -28,7 +38,7 @@ html {
 }
 
 body {
-  background-image: url('/images/topography.webp');
+  background-image: url('/images/wov.webp');
   background-position: top left;
   background-repeat: repeat;
   font-family: var(--font-family);
