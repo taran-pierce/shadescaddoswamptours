@@ -30,3 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Updated Google Analytics
 - SEO items
 - Style updates
+
+## [0.2.1] - 2024-09-29
+### Updated
+- Content updates
