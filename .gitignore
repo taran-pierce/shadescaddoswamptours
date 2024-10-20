@@ -1,5 +1,7 @@
 node_modules/*
 frontend/node_modules/*
+email-server/node_modules/*
+email-server/.env
 .idea/*
 **/.DS_Store
 frontend/.DS_Store
