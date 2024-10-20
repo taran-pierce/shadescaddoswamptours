@@ -21,7 +21,7 @@ export default function FaceBookButton() {
     <>
       <div
         className={`fb-like ${styles.faceBookWrapper}`}
-        data-href="//www.facebook.com/caddotours/"
+        data-href="//www.facebook.com/people/Shades-Caddo-Swamp-Tours/61561025831878/"
         data-width="300px"
         data-layout="button"
         data-action="like"

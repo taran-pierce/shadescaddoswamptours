@@ -10,7 +10,7 @@ function buildContent() {
   content.classList.add(styles.mapPopUpWrapper);
   content.innerHTML = `
     <div class="${styles.mapDetailsWrapper}">
-      <div>Tours leave from Shady Glade Marina</div>
+      <div>Tours leave from Uncertain Lodge and Inn</div>
     </div>
     `;
   return content;
@@ -59,8 +59,8 @@ export default function GoogleMap({
       // create the map with right zoom
       const map = new Map(document.getElementById(id) as HTMLElement, {
         center: {
-          lat: 32.71249923828125,
-          lng: -94.12107849121094
+          lat: 32.70644482806804,
+          lng: -94.11823841430281
         },
         zoom: 18,
         mapId: "3249873476c587d0"
@@ -77,29 +77,11 @@ export default function GoogleMap({
       const Marker = new AdvancedMarkerElement({
         map,
         position: {
-          lat: 32.71272903828125,
-          lng: -94.12065849121094
+          lat: 32.70644482706804,
+          lng: -94.11823841430281
         },
         content: pinScaled.element,
         title: 'Tours leave from Shady Glade Marina',
-      });
-  
-      const CaddoLakeMarketElement = new google.maps.marker.AdvancedMarkerElement({
-        map,
-        content: buildContent(),
-        position: {
-          lat: 32.71247923828125,
-          lng: -94.12070049121094
-        },
-        title: 'Tours leave from Shady Glade Marina',
-      });
-  
-      Marker.addListener("click", () => {
-        toggleHighlight(CaddoLakeMarketElement, buildContent());
-      });
-  
-      CaddoLakeMarketElement.addListener("click", () => {
-        toggleHighlight(CaddoLakeMarketElement, buildContent());
       });
     });
   }, [id]);

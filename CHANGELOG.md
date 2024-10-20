@@ -34,3 +34,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.2.1] - 2024-09-29
 ### Updated
 - Content updates
+
+## [0.2.2] - 2024-10-20
+### Updated
+- Content updates
+- Adjust Google Map

@@ -1,4 +1,4 @@
-// import Link from 'next/link';
+import Link from 'next/link';
 import GoogleMap from './GoogleMap';
 import Container from './Container';
 import { links } from './Navigation';
@@ -20,12 +20,20 @@ export const quickLinks = [
     name: 'HodgePodge Cottages',
   },
   {
-    href: 'https://riverbendoutfitters.com/',
-    name: 'Riverbend Outfitters',
-  },
-  {
     href: 'https://carriagehousejefferson.com/',
     name: 'Carriage House Bed and Breakfast',
+  },
+  {
+    href: 'https://www.deltastreetinn.com/',
+    name: 'Delta Street Inn',
+  },
+  {
+    href: 'https://www.facebook.com/UncertainLodgeInn/',
+    name: 'Uncertain Lodge and Inn',
+  },
+  {
+    href: 'https://www.facebook.com/people/Hookers-Pub-and-Grub/61555427144929/',
+    name: 'Hooker\'s Pub and Grub',
   },
 ];
 
@@ -42,7 +50,9 @@ export default function Footer() {
             <ul className={styles.listItems}>
               {links.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href}>{link.name}</a>
+                  <Link href={link.href}>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
               <li className={styles.facebookComponentWrapper}>
