@@ -39,3 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Updated
 - Content updates
 - Adjust Google Map
+
+## [1.0.0] - 2024-10-20
+### Updated
+- Set up email server
