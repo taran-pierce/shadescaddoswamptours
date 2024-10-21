@@ -43,3 +43,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.0] - 2024-10-20
 ### Updated
 - Set up email server
+
+## [1.0.1] - 2024-10-20
+### Updated
+- Configure email
