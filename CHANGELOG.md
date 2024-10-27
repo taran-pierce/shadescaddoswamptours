@@ -47,3 +47,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.1] - 2024-10-20
 ### Updated
 - Configure email
+
+## [1.0.2] - 2024-10-27
+### Updated
+- Update SEO
