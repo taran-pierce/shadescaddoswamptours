@@ -6,32 +6,32 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://www.shadescaddoswamptours.com</loc>
-    <lastmod>2024-09-24T10:36:00+00:00</lastmod>
+    <lastmod>2024-10-24T10:36:00+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://www.shadescaddoswamptours.com/about</loc>
-    <lastmod>2024-09-24T10:36:00+00:00</lastmod>
+    <lastmod>2024-10-24T10:36:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.shadescaddoswamptours.com/directions</loc>
-    <lastmod>2024-09-24T10:36:00+00:00</lastmod>
+    <lastmod>2024-10-24T10:36:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.shadescaddoswamptours.com/things-to-do</loc>
-    <lastmod>2024-09-24T10:36:00+00:00</lastmod>
+    <lastmod>2024-10-24T10:36:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.shadescaddoswamptours.com/photo-gallery</loc>
-    <lastmod>2024-09-24T10:36:00+00:00</lastmod>
+    <lastmod>2024-10-24T10:36:00+00:00</lastmod>
     <priority>0.60</priority>
   </url>
   <url>
     <loc>https://www.shadescaddoswamptours.com/contact</loc>
-    <lastmod>2024-09-24T10:36:00+00:00</lastmod>
+    <lastmod>2024-10-24T10:36:00+00:00</lastmod>
     <priority>0.90</priority>
   </url>
 </urlset>

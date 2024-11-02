@@ -51,3 +51,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.2] - 2024-10-27
 ### Updated
 - Update SEO
+
+## [1.0.3] - 2024-11-02
+### Updated
+- More SEO updates
