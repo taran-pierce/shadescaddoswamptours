@@ -13,6 +13,16 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width" />
       </Head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-1C79BTF0H5"></script>
+      <script dangerouslySetInnerHTML={{ __html: 
+        `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-1C79BTF0H5');
+        `
+      }}></script>
       <script dangerouslySetInnerHTML={{ __html: 
         `
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
