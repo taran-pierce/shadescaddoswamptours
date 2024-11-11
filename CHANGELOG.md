@@ -55,3 +55,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.0.3] - 2024-11-02
 ### Updated
 - More SEO updates
+
+## [1.0.4] - 2024-11-11
+### Updated
+- Remove links from Quick Links and things to do section
+- Fix security updates

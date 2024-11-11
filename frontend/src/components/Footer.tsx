@@ -7,10 +7,11 @@ import FaceBookButton from './FaceBookButton';
 import styles from './footer.module.scss';
 
 export const quickLinks = [
-  {
-    href: 'http://shadygladeresort.com/',
-    name: 'Shady Glade Resort',
-  },
+  // TODO add back when they fix their SSL
+  // {
+  //   href: 'http://shadygladeresort.com/',
+  //   name: 'Shady Glade Resort',
+  // },
   {
     href: 'https://www.moonglowlodge.com/',
     name: 'Moonglow Lodge',
