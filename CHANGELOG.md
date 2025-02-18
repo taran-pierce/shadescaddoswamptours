@@ -60,3 +60,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Updated
 - Remove links from Quick Links and things to do section
 - Fix security updates
+
+## [1.0.5] - 2025-02-18
+### Updated
+- Security updates
