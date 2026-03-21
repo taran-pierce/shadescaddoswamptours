@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Hero from '../src/components/Hero';
-import SplitContent from '../src/components/SplitContent';
-import { getContent } from '../src/utils/contentfulService.js';
+import Hero from '../components/Hero';
+import SplitContent from '../components/SplitContent';
+import { getContent } from '../utils/contentfulService.js';
 
 export default function Page({
   content,

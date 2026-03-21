@@ -1,11 +1,11 @@
 // import Script from 'next/script';
 import Head from 'next/head';
-import Page from '../src/components/Page';
-import { MenuStateProvider } from '../src/utils/menuState';
-import Header from '../src/components/Header';
-import Footer from '../src/components/Footer';
+import Page from '../components/Page';
+import { MenuStateProvider } from '../utils/menuState';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-import '../src/app/globals.css';
+import '../app/globals.css';
  
 export default function MyApp({ Component, pageProps }) {
   return (
