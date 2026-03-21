@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import cloudinary from 'cloudinary';
-import Hero from '../src/components/Hero';
-import SplitContent from '../src/components/SplitContent';
-import { getContent } from '../src/utils/contentfulService.js';
+import Hero from '../components/Hero';
+import PhotoGallery from '../components/PhotoGallery'
+import SplitContent from '../components/SplitContent';
+import { getContent } from '../utils/contentfulService.js';
 
 export default function Page({
   content,
-  heroImageData,
+  photoGalleryImages,
 }) {
   const {
     splitContentSections,
@@ -17,15 +18,8 @@ export default function Page({
     <main>
       <Head>
         <title>{content.pageTitle}</title>
-        <link rel="canonical" href="https://www.shadescaddoswamptours.com/about" />
+        <link rel="canonical" href="https://www.shadescaddoswamptours.com/photo-gallery" />
       </Head>
-      {hero && (
-        <Hero
-          imagePath={hero.fields.imageName}
-          alt={hero.fields.imageAltText}
-          heroImageData={heroImageData}
-        />
-      )}
       {splitContentSections && splitContentSections.map((splitContentSection) => (
         <SplitContent
           key={splitContentSection.sys.id}
@@ -33,6 +27,7 @@ export default function Page({
           imageFirst={splitContentSection?.fields?.imageFirst}
         />
       ))}
+      <PhotoGallery images={photoGalleryImages} />
     </main>
   );
 }
@@ -45,21 +40,23 @@ export async function getStaticProps() {
   });
 
   // ID for Contentful "Page" entry
-  const page = await getContent("1Tnx5R0HOzKQeb18FK0W8b");
+  const page = await getContent("5MlBXoVESzysHVpF5ELFJY");
   const content = page;
 
-  // get hero image info so we can preload the image since it is above the fold
-  const heroImageData = await cloudinary.v2.api.resources_by_tag('hero').then((res) => {
-    const heroData = res.resources;
 
-    return heroData;
+  // get images from Cloudinary tagged with 'gallery'
+  const photoGalleryImages = await cloudinary.v2.api.resources_by_tag('gallery', {
+    max_results: 50,
+  }).then((res) => {
+    const imageArray = res?.resources;
+
+    return imageArray;
   });
 
-  return { 
+  return {
     props: {
       content,
-      heroImageData,
+      photoGalleryImages,
     },
-  };
+  }
 }
-
