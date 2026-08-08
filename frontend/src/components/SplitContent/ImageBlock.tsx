@@ -37,6 +37,8 @@ export default function ImageBlock({
     });
   }, []);
 
+  console.log({ imageSource})
+
   return (
     <div
       className={`${styles.imageWrapper} ${topBorder ? styles.topBorder : ''}`}

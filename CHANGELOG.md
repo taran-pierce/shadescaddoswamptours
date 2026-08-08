@@ -68,3 +68,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [2.0.0] - 2026-03-21
 ### Updated
 - Upgrading packages for security
+
+## [2.1.0] - 2026-08-08
+### Updated
+- Changed cloudinary account
