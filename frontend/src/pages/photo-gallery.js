@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import cloudinary from 'cloudinary';
-import Hero from '../components/Hero';
 import PhotoGallery from '../components/PhotoGallery'
 import SplitContent from '../components/SplitContent';
 import { getContent } from '../utils/contentfulService.js';
@@ -42,7 +41,6 @@ export async function getStaticProps() {
   // ID for Contentful "Page" entry
   const page = await getContent("5MlBXoVESzysHVpF5ELFJY");
   const content = page;
-
 
   // get images from Cloudinary tagged with 'gallery'
   const photoGalleryImages = await cloudinary.v2.api.resources_by_tag('gallery', {
