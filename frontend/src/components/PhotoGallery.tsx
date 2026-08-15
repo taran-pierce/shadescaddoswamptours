@@ -27,7 +27,6 @@ interface Image {
 export default function PhotoGallery({ images }: { 
   images: Array<Image>,
 }) {
-  
   const ref = useRef<HTMLDivElement>(null);
   const [carouselDimensions, setCarouselDimensions] = useState({
     height: 0,
