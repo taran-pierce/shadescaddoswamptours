@@ -1,134 +1,248 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LoadingSpinner from './LoadingSpinner';
 
 import styles from './form.module.scss';
 
+type FormErrorState = {
+  hasError: boolean;
+  message: string;
+};
+
+const getFormTokenUrl = () => {
+  const rawUrl = process.env.NEXT_PUBLIC_CONTACT_FORM_URL ?? '';
+  if (!rawUrl) return '';
+
+  return rawUrl.replace(/\/send\/mail\/?$/, '/send/form-token');
+};
+
 export default function Form() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState({
+  const [isFetchingToken, setIsFetchingToken] = useState(true);
+  const [formToken, setFormToken] = useState('');
+  const [hasError, setHasError] = useState<FormErrorState>({
     hasError: false,
     message: '',
   });
 
-  async function handleSubmit(e: React.FormEvent<HTMLElement>) {
+  useEffect(() => {
+    let active = true;
+
+    async function fetchFormToken() {
+      const tokenUrl = getFormTokenUrl();
+
+      if (!tokenUrl) {
+        setHasError({
+          hasError: true,
+          message: 'The contact form endpoint is not configured.',
+        });
+        setIsFetchingToken(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(tokenUrl, {
+          method: 'GET',
+          cache: 'no-store',
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data?.token) {
+          throw new Error(data?.message || 'Unable to load form security token.');
+        }
+
+        if (active) {
+          setFormToken(data.token);
+          setHasError({
+            hasError: false,
+            message: '',
+          });
+        }
+      } catch (error: any) {
+        if (active) {
+          setHasError({
+            hasError: true,
+            message: error?.message || 'Unable to load form security token.',
+          });
+        }
+      } finally {
+        if (active) {
+          setIsFetchingToken(false);
+        }
+      }
+    }
+
+    fetchFormToken();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    // set loading state in case the post takes a while for some reason
-    setIsLoading(true);
+    if (!formToken) {
+      setHasError({
+        hasError: true,
+        message: 'Please wait for the form to finish loading and try again.',
+      });
+      return;
+    }
 
-    const contactForm = document.getElementById('contact') as HTMLFormElement;
-    const formData = new FormData(contactForm);
+    setIsLoading(true);
+    setHasError({
+      hasError: false,
+      message: '',
+    });
+
+    const formData = new FormData(e.currentTarget);
 
     const rawFormData = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message'),
+      name: String(formData.get('name') ?? '').trim(),
+      email: String(formData.get('email') ?? '').trim(),
+      message: String(formData.get('message') ?? '').trim(),
+      website: String(formData.get('website') ?? '').trim(),
+      formToken,
     };
 
     try {
       const url = process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string;
 
-      // send info to the form
       const response = await fetch(url, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(rawFormData),
-      }).then((response) => response.json())
-        .then((data) => {
-          // if response was bad, set error state
-          if (data?.code === 500) {
-            setHasError({
-              hasError: true,
-              message: 'There was an error, please try again later',
-            });
-          }
-
-          // if a 201 comes back then show submission as success
-          if (data?.code === 201) {
-            setHasSubmitted(true);
-          }
-
-          return data;
-        }).catch((error) => {
-          console.error('Error: ', error);
-        })
-
-  
-      // turn loading state off
-      setIsLoading(false);
-    } catch (error: any) {
-      console.log({
-        error,
       });
-      // set error state
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setHasError({
+          hasError: true,
+          message: data?.message || 'There was an error, please try again later',
+        });
+        return;
+      }
+
+      if (data?.code === 201 || response.status === 201) {
+        setHasSubmitted(true);
+        setHasError({
+          hasError: false,
+          message: '',
+        });
+        return;
+      }
+
       setHasError({
         hasError: true,
-        message: error?.message,
+        message: data?.message || 'There was an error, please try again later',
       });
-
-      // turn off loading if we know we have an error
+    } catch (error: any) {
+      setHasError({
+        hasError: true,
+        message: error?.message || 'There was an error, please try again later',
+      });
+    } finally {
       setIsLoading(false);
     }
   }
 
   return (
     <div className={styles.formWrapper}>
-      {isLoading && (
-        <LoadingSpinner />
-      )}
+      {isLoading && <LoadingSpinner />}
+
       {hasError.hasError && (
         <div className={styles.errorMessageWrapper}>
           <p>Looks like we had an issue sending the email!</p>
-          <p>Please try again later or contact via phone.</p>
+          <p>{hasError.message || 'Please try again later or contact via phone.'}</p>
         </div>
       )}
+
       <h3>Contact via email</h3>
+
       {!hasSubmitted && (
         <form
-          onSubmit={(e: React.FormEvent<HTMLElement>) => handleSubmit(e)}
+          onSubmit={handleSubmit}
           id="contact"
           className={styles.form}
         >
-          <fieldset disabled={isLoading}>
-            <label id="name" htmlFor="name">Name: 
+          <fieldset disabled={isLoading || isFetchingToken}>
+            <input
+              type="hidden"
+              name="formToken"
+              value={formToken}
+            />
+
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              defaultValue=""
+              style={{
+                position: 'absolute',
+                left: '-9999px',
+                width: '1px',
+                height: '1px',
+                opacity: 0,
+                pointerEvents: 'none',
+              }}
+            />
+
+            <label id="name" htmlFor="name">
+              Name:
               <input
                 id="name"
                 type="text"
                 name="name"
-                placeholder='Name'
+                placeholder="Name"
                 required
-                className={`${hasError.hasError ? styles.hasError : ''}`}
+                className={hasError.hasError ? styles.hasError : ''}
               />
             </label>
-            <label id="email" htmlFor="email">Email: 
+
+            <label id="email" htmlFor="email">
+              Email:
               <input
                 id="email"
                 name="email"
                 type="email"
-                placeholder='Email'
+                placeholder="Email"
                 required
-                className={`${hasError.hasError ? styles.hasError : ''}`}
+                className={hasError.hasError ? styles.hasError : ''}
               />
             </label>
-            <label id="message" htmlFor="message">Message: 
+
+            <label id="message" htmlFor="message">
+              Message:
               <textarea
                 id="message"
                 name="message"
                 required
-                className={`${hasError.hasError ? styles.hasError : ''}`}
+                className={hasError.hasError ? styles.hasError : ''}
               ></textarea>
             </label>
-            <button type="submit">Submit</button>
+
+            <button type="submit" disabled={isLoading || isFetchingToken}>
+              {isFetchingToken ? 'Loading…' : 'Submit'}
+            </button>
           </fieldset>
         </form>
       )}
+
       {hasSubmitted && (
         <div>
           <h4>Thank you!</h4>
@@ -137,4 +251,4 @@ export default function Form() {
       )}
     </div>
   );
-};
+}

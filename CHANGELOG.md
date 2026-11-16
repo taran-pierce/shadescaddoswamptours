@@ -72,3 +72,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [2.1.0] - 2026-08-08
 ### Updated
 - Changed cloudinary account
+
+## [2.1.1] - 2026-11-16
+### Updated
+- Email form
